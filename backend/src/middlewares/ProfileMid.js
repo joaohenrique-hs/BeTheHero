@@ -2,11 +2,11 @@ const { celebrate, Segments, Joi } = require('celebrate')
 
 module.exports = {
     index() {
-        const middleware = celebrate({
+        return celebrate({
             [Segments.HEADERS]: Joi.object({
-                authorization: Joi.string().required(),  
+                // authorization: Joi.string().required(),
+                token: Joi.string().required()  
              }).unknown(),
         })
-        return (middleware)
     }
 }

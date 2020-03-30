@@ -4,7 +4,8 @@ module.exports = {
     index() {
         const middleware = celebrate({
             [Segments.BODY]: Joi.object().keys({
-                id: Joi.string().required().length(8),
+                email: Joi.string().required().email(),
+                senha: Joi.string().required().min(5) 
             })
         })
         return (middleware)
