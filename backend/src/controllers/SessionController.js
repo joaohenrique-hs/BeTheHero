@@ -3,7 +3,7 @@ const generateJwtToken = require('../utils/generateJwtToken')
 
 module.exports = {
     async create(request, response) {
-        const { email, senha } = request.body
+        const { email, password } = request.body
 
         const ong = await connection('ongs')
             .where('email', email)
@@ -14,7 +14,7 @@ module.exports = {
             return response.status(400).json({ error: "No ONG found with this email" })
         }
 
-        if (ong.senha !== senha) {
+        if (ong.password !== password) {
             return response.status(401).json({ error: "Invalid password" })
         }
 

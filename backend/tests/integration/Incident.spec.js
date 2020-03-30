@@ -18,7 +18,7 @@ describe('Incident', () => {
             .send({
                 name: "APAE",
                 email: "contato@gmail.com",
-                senha: "contact",
+                password: "contact",
                 whatsapp: "77000000000",
                 city: "Aratiba",
                 uf: "RS"
@@ -28,7 +28,7 @@ describe('Incident', () => {
             .post('/session')
             .send({
                 email: "contato@gmail.com",
-                senha: "contact"
+                password: "contact"
             })
 
         const token = login.body.token
