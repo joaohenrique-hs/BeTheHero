@@ -6,8 +6,6 @@ module.exports = {
 
         const [count] = await connection('incidents').count()
 
-        console.log(count)
-
         const incidents = await connection('incidents')
             .join('ongs', 'ongs.id', '=', 'incidents.ong_id')
             .limit(5)
@@ -28,7 +26,7 @@ module.exports = {
 
     async create(request, response) {
         const { title, description, value } = request.body
-        const ong_id = request.headers.authorization
+        const ong_id = request.id
 
         const [id] = await connection('incidents').insert({
             title,
@@ -42,7 +40,7 @@ module.exports = {
 
     async delete(request, response) {
         const { id } = request.params
-        const ong_id = request.headers.authorization
+        const ong_id = request.id
 
         const incident = await connection('incidents')
             .where('id', id)
